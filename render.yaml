@@ -1,6 +1,6 @@
 services:
   # MySQL Private Database Service
-  - type: pserv
+  - type: web
     name: skill-gap-db-service
     env: docker
     dockerContext: .
