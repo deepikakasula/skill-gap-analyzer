@@ -1,0 +1,36 @@
+services:
+  # MySQL Private Database Service
+  - type: private
+    name: skill-gap-db-service
+    env: docker
+    dockerContext: .
+    dockerfilePath: db.Dockerfile
+    plan: free
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: RootPassword123!
+      - key: MYSQL_DATABASE
+        value: skill_gap_db
+      - key: MYSQL_USER
+        value: skill_user
+      - key: MYSQL_PASSWORD
+        value: SkillPassword123!
+      - key: MYSQL_PORT
+        value: 3306
+
+  # Spring Boot Backend API Web Service
+  - type: web
+    name: skill-gap-backend-service
+    env: docker
+    dockerContext: backend
+    dockerfilePath: Dockerfile
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://skill-gap-db-service:3306/skill_gap_db?useSSL=false&allowPublicKeyRetrieval=true
+      - key: SPRING_DATASOURCE_USERNAME
+        value: root
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: RootPassword123!
