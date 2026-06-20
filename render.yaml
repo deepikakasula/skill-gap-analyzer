@@ -23,7 +23,7 @@ services:
     name: skill-gap-backend-service
     env: docker
     dockerContext: backend
-    dockerfilePath: Dockerfile
+    dockerfilePath: backend/Dockerfile
     plan: free
     envVars:
       - key: SPRING_PROFILES_ACTIVE
