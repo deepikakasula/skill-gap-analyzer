@@ -1,4 +1,4 @@
-FROM mysql:8.0
+FROM mysql:8.0-debian
 
 # Install python3 to run a simple health check server
 RUN apt-get update && apt-get install -y python3 && rm -rf /var/lib/apt/lists/*
