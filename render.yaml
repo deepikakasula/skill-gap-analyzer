@@ -31,11 +31,10 @@ services:
           property: password
 
   # React Frontend Static Site
-  - type: web
+  - type: static
     name: skill-gap-frontend-service
-    runtime: static
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    publishPath: frontend/dist
     plan: free
     envVars:
       - key: VITE_API_URL
