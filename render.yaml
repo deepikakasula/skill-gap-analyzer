@@ -35,7 +35,7 @@ services:
     name: skill-gap-frontend-service
     runtime: static
     buildCommand: cd frontend && npm install && npm run build
-    publishPath: frontend/dist
+    staticPublishPath: frontend/dist
     plan: free
     envVars:
       - key: VITE_API_URL
