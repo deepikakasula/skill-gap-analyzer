@@ -9,6 +9,8 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+      - key: PORT
+        value: 8080
       - key: DB_HOST
         fromDatabase:
           name: skill-gap-db
@@ -38,7 +40,7 @@ services:
     staticPublishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
-        value: https://skill-gap-backend-service.onrender.com
+        value: https://skill-gap-backend-service-itye.onrender.com
 
 databases:
   - name: skill-gap-db
