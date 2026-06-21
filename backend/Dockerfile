@@ -21,7 +21,7 @@ RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 
 # Copy the built JAR from the builder stage
-COPY --from=builder /app/target/*.jar app.jar
+COPY --chown=spring:spring --from=builder /app/target/*.jar app.jar
 
 # Expose backend port
 EXPOSE 8080
