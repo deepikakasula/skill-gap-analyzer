@@ -9,9 +9,38 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: SPRING_DATASOURCE_URL
-        sync: false
-      - key: SPRING_DATASOURCE_USERNAME
-        sync: false
-      - key: SPRING_DATASOURCE_PASSWORD
-        sync: false
+      - key: DB_HOST
+        fromDatabase:
+          name: skill-gap-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: skill-gap-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: skill-gap-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: skill-gap-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: skill-gap-db
+          property: password
+
+  # React Frontend Static Site
+  - type: web
+    name: skill-gap-frontend-service
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://skill-gap-backend-service.onrender.com
+
+databases:
+  - name: skill-gap-db
+    plan: free

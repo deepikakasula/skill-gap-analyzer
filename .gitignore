@@ -43,3 +43,6 @@ Thumbs.db
 
 # Database files
 pgdata/
+*.mv.db
+*.trace.db
+backend/db/*.db
